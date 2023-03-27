@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "d9854cbb-27a3-4c8d-a68f-4e22a9065b92",
+		"name": "BookStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Access Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"roja\",\n    \"password\": \"roja@123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2phIiwiZXhwIjoxNjM3MTc0Njk5LCJpYXQiOjE2MzcxMzg2OTl9._lWTQGgRgwG5WiRlsnqjiK-kl5GzIxV3MyfoWhzdCns",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"isbn\": \"ISBNABC1230\",\n    \"title\": \"Game Of Thrones\",\n    \"authors\": [\n        {\n            \"name\": \"Roja\",\n            \"birthday\": \"09 Jan 81\"\n        },\n        {\n            \"name\": \"Roshini\",\n            \"birthday\": \"09 Dec 82\"\n        },\n        {\n            \"name\": \"Martin\",\n            \"birthday\": \"09 Mar 95\"\n        }\n    ],\n    \"publishedYear\": 2010,\n    \"price\": 999.50,\n    \"genre\": \"FICTION\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/bookstore/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookstore",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2phIiwiZXhwIjoxNjM3MTc0Njk5LCJpYXQiOjE2MzcxMzg2OTl9._lWTQGgRgwG5WiRlsnqjiK-kl5GzIxV3MyfoWhzdCns",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"isbn\": \"ISBNABC1230\",\n    \"title\": \"Game Of Thrones - Part1\",\n    \"publishedYear\": 2010,\n    \"price\": 850.50,\n    \"genre\": \"FICTION\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/bookstore/update?isbn=ISBNABC1230",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookstore",
+						"update"
+					],
+					"query": [
+						{
+							"key": "isbn",
+							"value": "ISBNABC1230"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find by Title",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2phIiwiZXhwIjoxNjM3MTc0Njk5LCJpYXQiOjE2MzcxMzg2OTl9._lWTQGgRgwG5WiRlsnqjiK-kl5GzIxV3MyfoWhzdCns",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/bookstore/findByTitle?title=Game Of Thrones - Part1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookstore",
+						"findByTitle"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Game Of Thrones - Part1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find by AuthorName",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2phIiwiZXhwIjoxNjM3MTc0Njk5LCJpYXQiOjE2MzcxMzg2OTl9._lWTQGgRgwG5WiRlsnqjiK-kl5GzIxV3MyfoWhzdCns",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/bookstore/findByAuthorName?authorName=Roshini",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookstore",
+						"findByAuthorName"
+					],
+					"query": [
+						{
+							"key": "authorName",
+							"value": "Roshini"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find by ISBN",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2phIiwiZXhwIjoxNjM3MTc0Njk5LCJpYXQiOjE2MzcxMzg2OTl9._lWTQGgRgwG5WiRlsnqjiK-kl5GzIxV3MyfoWhzdCns",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/bookstore/findByIsbn?isbn=ISBNABC1230",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookstore",
+						"findByIsbn"
+					],
+					"query": [
+						{
+							"key": "isbn",
+							"value": "ISBNABC1230"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Books",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2phIiwiZXhwIjoxNjM3MTc0Njk5LCJpYXQiOjE2MzcxMzg2OTl9._lWTQGgRgwG5WiRlsnqjiK-kl5GzIxV3MyfoWhzdCns",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/bookstore/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookstore",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2phIiwiZXhwIjoxNjM3MTc0Njk5LCJpYXQiOjE2MzcxMzg2OTl9._lWTQGgRgwG5WiRlsnqjiK-kl5GzIxV3MyfoWhzdCns",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/bookstore/delete?isbn=ISBNABC1230",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"bookstore",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "isbn",
+							"value": "ISBNABC1230"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
